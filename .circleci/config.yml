@@ -17,6 +17,7 @@ jobs:
           command: |
             /authenticate.bash # this script is built in the praqma/gcloud-kubectl-helm:v2.8.1 image
             helm-demo/init.sh
+            sleep 30
             helm upgrade jenkins stable/jenkins --install --namespace demo \
              -f values/jenkins-values.yaml 
 
