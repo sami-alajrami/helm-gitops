@@ -19,7 +19,7 @@ jobs:
             helm-demo/init.sh
             sleep 30
             helm upgrade jenkins stable/jenkins --install --namespace demo \
-             -f values/jenkins-values.yaml 
+             -f helm-demo/jenkins-values.yaml 
 
 ###################             
   helmsman-deploy:
