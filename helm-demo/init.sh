@@ -15,4 +15,4 @@ kubectl create clusterrolebinding tiller-binding --clusterrole=cluster-admin --s
 
 helm init --service-account tiller --override 'spec.template.spec.containers[0].command'='{/tiller,--storage=secret}'
 
-kubectl get pods -n kube-system -w
+kubectl get pods -n kube-system
