@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  helm-deploy:
+
+    docker:
+    - image: praqma/gcloud-kubectl-helm:v2.8.1
+      environment: 
+        PROJECT: helmsman-demo
+        CLUSTER: demo-cluster
+        ZONE: europe-west1-c
+        SERVICE_ACCOUNT: 941346879937-compute@developer.gserviceaccount.com
+    steps:
+      - checkout
+      
+      - run:
+          name: deploy jenkins
+          command: |
+            /authenticate.bash # this script is built in the praqma/gcloud-kubectl-helm:v2.8.1 image
+            helm-demo/init.sh
+            helm upgrade jenkins stable/jenkins --install --namespace demo \
+             -f values/jenkins-values.yaml 
+
+###################             
+  helmsman-deploy:
+
+    docker:
+    - image: praqma/helmsman:v1.6.2-helm-v2.10.0
+    steps:
+      - checkout
+      
+      - run:
+          name: deploy all
+          command: |
+            helmsman --debug --apply -f helmsman/helmsman-demo.toml          
+
+workflows:
+  version: 2
+  helm-deploy:
+    jobs:
+    - helm-deploy:
+        filters:
+          branches:
+            only:
+            - helm-demo
+  
+  helmsman-deploy:
+    jobs:
+    - helmsman-deploy:
+        filters:
+          branches: 
+            only: 
+            - master
+
+             
