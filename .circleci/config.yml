@@ -21,6 +21,7 @@ jobs:
             helm upgrade jenkins stable/jenkins --install --namespace demo \
              -f helm-demo/jenkins-values.yaml 
 
+
 ###################             
   helmsman-deploy:
 
