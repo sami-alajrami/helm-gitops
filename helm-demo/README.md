@@ -9,7 +9,7 @@ Run `./init.sh` to configure k8s connection and initialize helm.
 
 `helm search jenkins`
 
-`helm install stable/jenkins --namespace demo --name jenkins`
+`helm install stable/jenkins --namespace demo --name jenkins --set Master.ServicePort=80`
 
 `helm upgrade jenkins stable/jenkins --set Master.ImageTag=2.145-slim`
 
