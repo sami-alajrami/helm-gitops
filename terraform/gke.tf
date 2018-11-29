@@ -29,7 +29,7 @@ module "cluster" {
   cluster_password    = "${var.cluster_admin_password}"
   cluster_name        = "demo-cluster"
   cluster_description = "Demo cluster."
-  cluster_version     = "1.10.6-gke.4"
+  cluster_version     = "1.10.9-gke.5"
   cluster_zone        = "${var.cluster_zone}"
 }
 
