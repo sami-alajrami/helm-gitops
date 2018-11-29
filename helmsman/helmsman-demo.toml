@@ -72,7 +72,7 @@
     valuesFile = "values/grafana-values.yaml"
     priority = -5
     wait = true
-    protected = true
+    protected = false
     [apps.grafana.set]
     "adminPassword"="$GRAFANA_ADMIN_PASSWORD"
 
