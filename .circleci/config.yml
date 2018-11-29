@@ -25,7 +25,7 @@ jobs:
   helmsman-deploy:
 
     docker:
-    - image: praqma/helmsman:latest
+    - image: praqma/helmsman:v1.7.1-helm-v2.10.0
     steps:
       - checkout
       
