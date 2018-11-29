@@ -90,7 +90,7 @@
     test = false # run the tests when this release is installed for the first time only
     priority= -3
   [apps.jenkins.setString] # values to override values from values.yaml with values from env vars or directly entered-- useful for passing secrets to charts
-    "Master.AdminPassword"="1234567890" # $JENKINS_PASSWORD must exist in the environment
+    "Master.AdminPassword"="1234567890123" # $JENKINS_PASSWORD must exist in the environment
   [apps.jenkins.set]  
     "Master.AdminUser"="sami"
 
