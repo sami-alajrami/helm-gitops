@@ -77,22 +77,22 @@
     "adminPassword"="$GRAFANA_ADMIN_PASSWORD"
 
   # jenkins will be deployed using the Tiller in the staging namespace
-  [apps.jenkins]
-    namespace = "demo" # maps to the namespace as defined in namespaces above
-    enabled = true # change to false if you want to delete this app release [default = false]
-    chart = "stable/jenkins" # changing the chart name means delete and recreate this release
-    version = "0.24.0" # chart version
-    ### Optional values below
-    name = "jenkins" # should be unique across all apps which are managed by the same Tiller
-    valuesFile = "values/jenkins-values.yaml" # leaving it empty uses the default chart values
-    #tillerNamespace = "kube-system" # which Tiller to use to deploy this release
-    purge = false # will only be considered when there is a delete operation
-    test = false # run the tests when this release is installed for the first time only
-    priority= -3
-  [apps.jenkins.setString] # values to override values from values.yaml with values from env vars or directly entered-- useful for passing secrets to charts
-    "Master.AdminPassword"="1234567890123" # $JENKINS_PASSWORD must exist in the environment
-  [apps.jenkins.set]  
-    "Master.AdminUser"="sami"
+  # [apps.jenkins]
+  #   namespace = "demo" # maps to the namespace as defined in namespaces above
+  #   enabled = true # change to false if you want to delete this app release [default = false]
+  #   chart = "stable/jenkins" # changing the chart name means delete and recreate this release
+  #   version = "0.24.0" # chart version
+  #   ### Optional values below
+  #   name = "jenkins" # should be unique across all apps which are managed by the same Tiller
+  #   valuesFile = "values/jenkins-values.yaml" # leaving it empty uses the default chart values
+  #   #tillerNamespace = "kube-system" # which Tiller to use to deploy this release
+  #   purge = false # will only be considered when there is a delete operation
+  #   test = false # run the tests when this release is installed for the first time only
+  #   priority= -3
+  # [apps.jenkins.setString] # values to override values from values.yaml with values from env vars or directly entered-- useful for passing secrets to charts
+  #   "Master.AdminPassword"="1234567890123" # $JENKINS_PASSWORD must exist in the environment
+  # [apps.jenkins.set]  
+  #   "Master.AdminUser"="sami"
 
 
   # artifactory will be deployed using the Tiller in the kube-system namespace
